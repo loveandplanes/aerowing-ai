@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerowing-ai-pro"
+version = "1.0.0"
+description = "Enterprise-Grade 3D Aerodynamic AI Design, CFD Surrogate & MDO Optimization Suite"
+authors = [
+    { name = "Aerospace AI Engineering Team" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=2.0.0",
+    "scipy>=1.10.0",
+    "matplotlib>=3.7.0",
+    "plotly>=5.14.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.22.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+aerowing = "aerowing.cli.main_cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0.0", "pytest-cov"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"

@@ -1,0 +1,23 @@
+# ONERA M6 Transonic Benchmark Wing Configuration
+# AGARD Advisory Report 138 / NASA Wind Tunnel Benchmark
+geometry:
+  name: "ONERA_M6_Benchmark"
+  span: 2.392                 # Full wingspan (m) - Aspect Ratio ~ 3.8
+  aspect_ratio: 3.80
+  taper_ratio: 0.562
+  sweep_le_deg: 30.0          # Leading edge sweep angle (deg)
+  dihedral_deg: 0.0
+  twist_root_deg: 0.0
+  twist_tip_deg: -3.12        # Geometric washout (deg)
+  root_tc: 0.098              # ONERA D symmetric airfoil ~9.8% t/c
+  tip_tc: 0.098
+
+flight_condition:
+  mach: 0.8395                # Classic lambda-shock condition
+  alpha_deg: 3.06             # Standard AGARD test angle of attack
+  reynolds: 1.17e7
+
+reference_values:
+  cl_exp: 0.285
+  cd_exp: 0.0163
+  l_over_d_exp: 17.5

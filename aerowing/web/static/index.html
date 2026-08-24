@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroWing AI Pro — 3D Aerospace Aerodynamic Design & CFD Suite</title>
+  <meta name="description" content="Enterprise-grade 3D wing aerodynamic design, neural surrogate modeling, CFD automation, and MDO optimization platform.">
+  <!-- 100% PRIVATE: no external fonts, no CDN, no third-party requests.
+       All assets (styles, scripts, vendor libraries) are served locally. -->
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/vendor/three.min.js"></script>
+  <script src="/static/vendor/OrbitControls.js"></script>
+</head>
+<body class="dark-theme">
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 16L22 4L14 20L10 14L2 16Z"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>AEROWING <span class="accent-text">AI PRO</span></h1>
+          <span class="sub-badge">3D AEROSPACE CFD & NEURAL ENGINE</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="preset-selector">
+          <label for="benchmarkSelect">BENCHMARK:</label>
+          <select id="benchmarkSelect">
+            <option value="custom">Custom Transport Wing</option>
+            <option value="onera_m6">ONERA M6 (Transonic AGARD)</option>
+            <option value="nasa_crm">NASA CRM (Supercritical Transport)</option>
+            <option value="naca0012_swept">NACA 0012 Swept Wing</option>
+            <option value="supersonic_arrow">Supersonic Arrow Wing</option>
+          </select>
+        </div>
+
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-label">AI SURROGATE ONLINE (&lt;5ms)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace-grid">
+      <!-- Left Sidebar: Controls -->
+      <aside class="sidebar-panel left-panel">
+        <div class="panel-header">
+          <h2>PARAMETRIC GEOMETRY</h2>
+          <span class="section-tag">CAD / CST-3D</span>
+        </div>
+
+        <div class="controls-scroll">
+          <!-- Wingspan -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderSpan">Wingspan (b)</label>
+              <span class="val-display" id="valSpan">30.00 m</span>
+            </div>
+            <input type="range" id="sliderSpan" min="5.0" max="65.0" step="0.5" value="30.0">
+          </div>
+
+          <!-- Aspect Ratio -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderAR">Aspect Ratio (AR)</label>
+              <span class="val-display" id="valAR">9.50</span>
+            </div>
+            <input type="range" id="sliderAR" min="3.0" max="15.0" step="0.1" value="9.5">
+          </div>
+
+          <!-- Taper Ratio -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderTaper">Taper Ratio (λ)</label>
+              <span class="val-display" id="valTaper">0.28</span>
+            </div>
+            <input type="range" id="sliderTaper" min="0.15" max="1.0" step="0.01" value="0.28">
+          </div>
+
+          <!-- LE Sweep Angle -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderSweep">LE Sweep Angle (Λ)</label>
+              <span class="val-display" id="valSweep">27.5°</span>
+            </div>
+            <input type="range" id="sliderSweep" min="0.0" max="50.0" step="0.5" value="27.5">
+          </div>
+
+          <!-- Dihedral -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderDihedral">Dihedral Angle (Γ)</label>
+              <span class="val-display" id="valDihedral">3.5°</span>
+            </div>
+            <input type="range" id="sliderDihedral" min="0.0" max="10.0" step="0.5" value="3.5">
+          </div>
+
+          <!-- Tip Washout Twist -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderTwist">Tip Washout (θ_tip)</label>
+              <span class="val-display" id="valTwist">-2.5°</span>
+            </div>
+            <input type="range" id="sliderTwist" min="-6.0" max="3.0" step="0.2" value="-2.5">
+          </div>
+
+          <!-- Thickness Root -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderRootTc">Root (t/c)</label>
+              <span class="val-display" id="valRootTc">14.0%</span>
+            </div>
+            <input type="range" id="sliderRootTc" min="0.06" max="0.20" step="0.005" value="0.14">
+          </div>
+
+          <div class="panel-divider"></div>
+
+          <div class="panel-header">
+            <h2>FLIGHT ENVELOPE</h2>
+            <span class="section-tag">ATMOSPHERIC</span>
+          </div>
+
+          <!-- Angle of Attack -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderAlpha">Angle of Attack (α)</label>
+              <span class="val-display highlight-val" id="valAlpha">2.50°</span>
+            </div>
+            <input type="range" id="sliderAlpha" min="-2.0" max="14.0" step="0.25" value="2.5">
+          </div>
+
+          <!-- Mach Number -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderMach">Mach Number (M)</label>
+              <span class="val-display highlight-val" id="valMach">0.820</span>
+            </div>
+            <input type="range" id="sliderMach" min="0.10" max="1.60" step="0.01" value="0.82">
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center 3D Viewport -->
+      <main class="viewport-panel">
+        <div class="viewport-toolbar">
+          <div class="view-mode-buttons">
+            <button id="btnToggleSymmetry" class="tool-btn active" title="Toggle Full Aircraft / Semi-Span">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M4 12h16M2 7l10 5-10 5V7zm20 0l-10 5 10 5V7z"/>
+              </svg>
+              <span>SYMMETRY</span>
+            </button>
+            <button id="btnToggleWireframe" class="tool-btn" title="Toggle CFD Wireframe">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="3" y1="15" x2="21" y2="15"/>
+                <line x1="9" y1="3" x2="9" y2="21"/>
+                <line x1="15" y1="3" x2="15" y2="21"/>
+              </svg>
+              <span>WIREFRAME</span>
+            </button>
+            <button id="btnResetCamera" class="tool-btn" title="Reset View">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              <span>RESET</span>
+            </button>
+          </div>
+
+          <div class="colormap-legend">
+            <span class="legend-label">Cp:</span>
+            <div class="color-bar-gradient"></div>
+            <span class="legend-scale">-1.8 (Suction)</span>
+            <span class="legend-scale">+0.8</span>
+          </div>
+        </div>
+
+        <!-- WebGL 3D Canvas -->
+        <div id="threejs-container" class="canvas-container"></div>
+
+        <!-- Overlay HUD Watermark -->
+        <div class="viewport-overlay-hud">
+          <div class="hud-item">
+            <span class="hud-label">REF AREA (S_ref)</span>
+            <span class="hud-value" id="hudSref">94.74 m²</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">MAC (c_bar)</span>
+            <span class="hud-value" id="hudMAC">3.52 m</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">ROOT CHORD</span>
+            <span class="hud-value" id="hudRootC">4.93 m</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">FUEL CAPACITY</span>
+            <span class="hud-value highlight" id="hudFuel">38.45 m³</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Sidebar: Telemetry HUD -->
+      <aside class="sidebar-panel right-panel">
+        <div class="panel-header">
+          <h2>AERODYNAMIC TELEMETRY</h2>
+          <span class="section-tag live">LIVE</span>
+        </div>
+
+        <div class="telemetry-grid">
+          <!-- Lift Coefficient -->
+          <div class="telemetry-card primary">
+            <div class="card-label">LIFT COEFFICIENT (C_L)</div>
+            <div class="card-value" id="teleCL">0.524</div>
+            <div class="card-bar"><div class="bar-fill" id="barCL" style="width: 52%;"></div></div>
+          </div>
+
+          <!-- Total Drag -->
+          <div class="telemetry-card primary">
+            <div class="card-label">TOTAL DRAG (C_D)</div>
+            <div class="card-value" id="teleCD">0.0264</div>
+            <div class="card-sub" id="teleCDCounts">264.0 drag counts</div>
+          </div>
+
+          <!-- Aerodynamic Efficiency -->
+          <div class="telemetry-card highlight-card">
+            <div class="card-label">AERO EFFICIENCY (L / D)</div>
+            <div class="card-value large" id="teleLD">19.85</div>
+            <div class="card-sub">Cruise Range Factor Optimal</div>
+          </div>
+
+          <!-- Drag Breakdown -->
+          <div class="breakdown-box">
+            <div class="breakdown-title">DRAG POLAR BREAKDOWN</div>
+            
+            <div class="breakdown-row">
+              <span>Induced Drag (C_Di):</span>
+              <strong id="teleCDi">0.0092</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Viscous Profile (C_Dp):</span>
+              <strong id="teleCDp">0.0158</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Transonic Wave (C_Dw):</span>
+              <strong id="teleCDw">0.0014</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Span Efficiency (e):</span>
+              <strong id="teleSpanE">0.962</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Pitching Moment (C_M):</span>
+              <strong id="teleCM">-0.084</strong>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="action-buttons">
+            <button id="btnOpenInverseModal" class="primary-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+              <span>AI INVERSE SYNTHESIS</span>
+            </button>
+            <button id="btnExportSTL" class="secondary-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              <span>DOWNLOAD 3D STL</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Analytics & MDO Panel -->
+    <section class="bottom-panel">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="tabLift">SPANWISE LIFT LOADING C_L(y)</button>
+        <button class="tab-btn" data-tab="tabInverse">AI INVERSE DESIGN</button>
+        <button class="tab-btn" data-tab="tabPareto">MDO PARETO FRONTIER</button>
+        <button class="tab-btn" data-tab="tabExport">ENTERPRISE CAD / CFD EXPORT</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- Tab 1: Spanwise Lift Chart -->
+        <div class="tab-pane active" id="tabLift">
+          <div class="chart-wrapper">
+            <canvas id="liftCanvas" width="900" height="200"></canvas>
+          </div>
+        </div>
+
+        <!-- Tab 2: AI Inverse Design -->
+        <div class="tab-pane" id="tabInverse">
+          <div class="inverse-design-grid">
+            <div class="input-card">
+              <h3>MISSION AERODYNAMIC TARGETS</h3>
+              <div class="form-row">
+                <label>Target Cruise C_L:</label>
+                <input type="number" id="targetClInput" value="0.55" step="0.05">
+              </div>
+              <div class="form-row">
+                <label>Target Cruise Mach:</label>
+                <input type="number" id="targetMachInput" value="0.82" step="0.01">
+              </div>
+              <div class="form-row">
+                <label>Target Aspect Ratio:</label>
+                <input type="number" id="targetARInput" value="9.5" step="0.5">
+              </div>
+              <div class="form-row">
+                <label>Target Efficiency (L/D):</label>
+                <input type="number" id="targetLDInput" value="19.5" step="0.5">
+              </div>
+              <button id="btnExecuteInverse" class="primary-btn full-width">SYNTHESIZE 3D WING WITH AI</button>
+            </div>
+            <div class="results-card" id="inverseResultsBox">
+              <h3>GENERATED AEROSPACE SPECIFICATION</h3>
+              <p class="placeholder-text">Click synthesize to generate optimal 3D geometry using the 3D-CVAE Neural Model.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: MDO Pareto Frontier -->
+        <div class="tab-pane" id="tabPareto">
+          <div class="pareto-wrapper">
+            <div class="pareto-info">
+              <h3>MULTIDISCIPLINARY DESIGN OPTIMIZATION (NSGA-II)</h3>
+              <p>Simultaneously maximizes aerodynamic efficiency (L/D), fuel volume (m³), and minimizes root bending moment arm.</p>
+              <button id="btnRunPareto" class="secondary-btn">RUN 3D EVOLUTIONARY PARETO OPTIMIZATION</button>
+            </div>
+            <div class="pareto-chart-box">
+              <canvas id="paretoCanvas" width="500" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Export Hub -->
+        <div class="tab-pane" id="tabExport">
+          <div class="export-hub-grid">
+            <div class="export-card">
+              <h4>3D CAD STL MESH</h4>
+              <p>Watertight triangulated surface mesh for SolidWorks, CATIA, NX, and 3D printing.</p>
+              <button class="export-dl-btn" data-format="stl">DOWNLOAD .STL</button>
+            </div>
+            <div class="export-card">
+              <h4>PARAVIEW VTK FIELD</h4>
+              <p>Standard VTK file with embedded 3D surface Cp pressure and velocity fields.</p>
+              <button class="export-dl-btn" data-format="vtk">DOWNLOAD .VTK</button>
+            </div>
+            <div class="export-card">
+              <h4>STANFORD SU2 CFD MESH</h4>
+              <p>3D native SU2 unstructured mesh with pre-configured boundary markers.</p>
+              <button class="export-dl-btn" data-format="su2">DOWNLOAD .SU2</button>
+            </div>
+            <div class="export-card">
+              <h4>B-SPLINE CURVE TABLES</h4>
+              <p>Section-by-section coordinate tables (CSV/JSON) for high-precision lofting.</p>
+              <button class="export-dl-btn" data-format="csv">DOWNLOAD .CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

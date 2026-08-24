@@ -1,0 +1,23 @@
+# NASA Common Research Model (CRM) Wing Configuration
+# AIAA Drag Prediction Workshop (DPW) Standard Transonic Transport
+geometry:
+  name: "NASA_CRM_Wing"
+  span: 58.76                 # Full wingspan (m)
+  aspect_ratio: 9.0
+  taper_ratio: 0.275
+  sweep_le_deg: 35.0          # Leading edge sweep angle (deg)
+  dihedral_deg: 5.0
+  twist_root_deg: 4.4
+  twist_tip_deg: -3.8         # Significant aeroelastic & aerodynamic washout
+  root_tc: 0.154              # Supercritical root
+  tip_tc: 0.095               # Supercritical thin tip
+
+flight_condition:
+  mach: 0.85                  # Nominal design cruise Mach
+  alpha_deg: 2.2              # Target design lift condition
+  reynolds: 4.0e7             # Full scale flight Reynolds number
+
+reference_values:
+  target_cl: 0.50
+  target_cd: 0.0245
+  target_l_over_d: 20.4

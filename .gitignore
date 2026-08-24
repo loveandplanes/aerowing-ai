@@ -1,0 +1,34 @@
+# --- CFD artifacts (regenerable / huge; the tooling is the product) ---
+cfd_anchors/runs/
+cfd_anchors/archive_*/
+*.su2
+*.vtu
+*.vtk
+restart_flow.dat
+restart.dat
+forces_breakdown.dat
+history.csv
+
+# --- data & models (keep local; data_lake holds experiment history) ---
+data_lake/*.sqlite
+checkpoints/
+outputs/
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- one-drive / temp noise ---
+~$*
+*.tmp

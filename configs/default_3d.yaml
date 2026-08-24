@@ -1,0 +1,63 @@
+# AeroWing AI Pro - Default 3D Wing Configuration
+geometry:
+  name: "Transonic_Transport_Wing"
+  span: 30.0                  # Total wingspan (m)
+  aspect_ratio: 9.5           # b^2 / S
+  taper_ratio: 0.28           # c_tip / c_root
+  sweep_le_deg: 27.5          # Leading edge sweep angle (deg)
+  dihedral_deg: 3.5           # Dihedral angle (deg)
+  twist_root_deg: 2.0         # Geometric incidence at root (deg)
+  twist_tip_deg: -2.5         # Geometric incidence at tip (washout, deg)
+  cst_order: 6                # Order of Bernstein polynomials for CST airfoils
+  num_stations: 3             # Number of defining spanwise stations (Root, Kink, Tip)
+  root_tc: 0.14               # Thickness-to-chord at root
+  tip_tc: 0.10                # Thickness-to-chord at tip
+
+solver:
+  vlm:
+    num_chordwise_panels: 16  # Panels along chord
+    num_spanwise_panels: 32   # Panels along semi-span
+    compressible: true        # Use Prandtl-Glauert / Karman-Tsien correction
+  viscous:
+    enabled: true
+    transition_xtr: 0.05      # Transition location (fraction of chord)
+  wave_drag:
+    enabled: true
+    korn_tech_factor: 0.95    # Technology factor for supercritical section
+
+flight_condition:
+  mach: 0.82                  # Cruise Mach number
+  alpha_deg: 2.5              # Angle of attack (deg)
+  reynolds: 2.5e7             # Reynolds number based on MAC
+  altitude_m: 10668           # 35,000 ft
+
+surrogate:
+  hidden_dims: [256, 256, 256, 128]
+  fourier_features: 32
+  activation: "gelu"
+  dropout: 0.02
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  epochs: 100
+  batch_size: 64
+  physics_loss_weight: 0.25
+
+generator:
+  latent_dim: 16
+  hidden_dims: [192, 192, 128]
+  beta_kld: 0.005
+  lr: 8.0e-4
+  epochs: 80
+
+optimization:
+  population_size: 40
+  generations: 30
+  objectives: ["maximize_L_over_D", "maximize_fuel_volume", "minimize_bending_moment"]
+  constraints:
+    min_cl: 0.50
+    max_root_tc: 0.16
+    min_tip_tc: 0.08
+
+web:
+  host: "127.0.0.1"
+  port: 8080
