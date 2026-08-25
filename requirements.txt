@@ -8,4 +8,5 @@ tqdm>=4.65.0
 fastapi>=0.100.0
 uvicorn>=0.22.0
 pydantic>=2.0.0
+httpx>=0.24
 pytest>=7.0.0
