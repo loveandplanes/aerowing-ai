@@ -1,0 +1,159 @@
+{
+  "rows": [
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "R2_frozen",
+      "retain_before": 0.3604077398777008,
+      "learn_before": 0.36852917075157166,
+      "retain": 0.3501991033554077,
+      "learn": 0.3589669466018677
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "plain_ft",
+      "retain_before": 0.3604077398777008,
+      "learn_before": 0.36852917075157166,
+      "retain": 0.45920178294181824,
+      "learn": 0.4764610528945923
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "GRADED",
+      "retain_before": 0.3604077398777008,
+      "learn_before": 0.36852917075157166,
+      "retain": 0.3803773820400238,
+      "learn": 0.3900226056575775
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "R2_frozen",
+      "retain_before": 0.42735275626182556,
+      "learn_before": 0.41317158937454224,
+      "retain": 0.2384217530488968,
+      "learn": 0.23038186132907867
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "plain_ft",
+      "retain_before": 0.42735275626182556,
+      "learn_before": 0.41317158937454224,
+      "retain": 0.41539525985717773,
+      "learn": 0.4018040597438812
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "GRADED",
+      "retain_before": 0.42735275626182556,
+      "learn_before": 0.41317158937454224,
+      "retain": 0.23920036852359772,
+      "learn": 0.23133684694766998
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "R2_frozen",
+      "retain_before": 0.4975554943084717,
+      "learn_before": 0.47262829542160034,
+      "retain": 0.21407875418663025,
+      "learn": 0.1994258314371109
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "plain_ft",
+      "retain_before": 0.4975554943084717,
+      "learn_before": 0.47262829542160034,
+      "retain": 0.48650243878364563,
+      "learn": 0.45978832244873047
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "GRADED",
+      "retain_before": 0.4975554943084717,
+      "learn_before": 0.47262829542160034,
+      "retain": 0.20052598416805267,
+      "learn": 0.1864846795797348
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "R2_frozen",
+      "retain_before": 0.5413368344306946,
+      "learn_before": 0.5562137961387634,
+      "retain": 0.2679266035556793,
+      "learn": 0.26085081696510315
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "plain_ft",
+      "retain_before": 0.5413368344306946,
+      "learn_before": 0.5562137961387634,
+      "retain": 0.6018930077552795,
+      "learn": 0.6279898285865784
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "GRADED",
+      "retain_before": 0.5413368344306946,
+      "learn_before": 0.5562137961387634,
+      "retain": 0.32251012325286865,
+      "learn": 0.32157766819000244
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "R2_frozen",
+      "retain_before": 0.27859318256378174,
+      "learn_before": 0.2736971974372864,
+      "retain": 0.2267797440290451,
+      "learn": 0.2250506430864334
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "plain_ft",
+      "retain_before": 0.27859318256378174,
+      "learn_before": 0.2736971974372864,
+      "retain": 0.2310122847557068,
+      "learn": 0.22311410307884216
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "GRADED",
+      "retain_before": 0.27859318256378174,
+      "learn_before": 0.2736971974372864,
+      "retain": 0.2264663130044937,
+      "learn": 0.22504922747612
+    }
+  ],
+  "summary": {
+    "R2_frozen": {
+      "retain_mean": 0.25948119163513184,
+      "retain_std": 0.04873464977767181,
+      "learn_mean": 0.25493521988391876,
+      "learn_std": 0.05556049316766522
+    },
+    "plain_ft": {
+      "retain_mean": 0.4388009548187256,
+      "retain_std": 0.12084254305071068,
+      "learn_mean": 0.4378314733505249,
+      "learn_std": 0.1307945498342534
+    },
+    "GRADED": {
+      "retain_mean": 0.2738160341978073,
+      "retain_std": 0.06713882185944169,
+      "learn_mean": 0.2708942055702209,
+      "learn_std": 0.07423193895633382
+    }
+  }
+}
