@@ -849,6 +849,7 @@ class ContinualTrainer:
                growth_min_new: int = 800, growth_plateau_updates: int = 4,
                growth_min_rel_gain: float = 5e-3, tau: float = 1e-3,
                new_sample_weight: float = 1.0, train_noise: float = 0.0,
+               error_routing: bool = False,
                verbose: bool = True) -> Dict[str, Any]:
         x_new, y_new, m_new, ids_new = self.lake.newer_than(self.last_processed)
         if x_new.shape[0] < min_new_samples:
@@ -892,7 +893,13 @@ class ContinualTrainer:
         else:
             x, y, msk = x_new, y_new, m_new
 
-        if grew:
+        if grew and error_routing:
+            # Error-directed routing (Formulation C): OFF by default.
+            # Controlled ablation (experiments/growth_ablation.py) found it
+            # underperforms plain fine-tuning under both shifted and mixed
+            # exposure - suppressing gradients on already-solved samples
+            # removes the replay anchoring that retention depends on. Kept
+            # as a research path; re-enable only with new evidence.
             err_old = self._per_sample_errs(x, y, msk)
 
         # -- incremental fine-tune from last checkpoint (controller #4) --------
@@ -927,8 +934,9 @@ class ContinualTrainer:
                         if i < n_new:
                             w_row[r] = float(new_sample_weight)
                     mse_part = mse_part * w_row
-                if grew:
+                if grew and error_routing:
                     # Formulation C: error-directed per-sample weighting
+                    # (disabled by default - see update() docstring note)
                     err_new = mse_part.detach().cpu().numpy()
                     w = error_directed_weights(err_old[idx], err_new, tau=tau)
                     w_t = torch.tensor(w, dtype=torch.float32, device=self.device)

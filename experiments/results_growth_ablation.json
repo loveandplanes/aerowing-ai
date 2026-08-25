@@ -1,0 +1,529 @@
+{
+  "rows": [
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "cold_retrain",
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.2699659466743469,
+      "learn": 0.26821449398994446
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "plain_ft",
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.1461385190486908,
+      "learn": 0.13840554654598236
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "grow_mse",
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.164751797914505,
+      "learn": 0.1565537303686142
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "grow_formA",
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.18743185698986053,
+      "learn": 0.1814875453710556
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "grow_formC",
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.19864198565483093,
+      "learn": 0.19311630725860596
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "cold_retrain",
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.20550447702407837,
+      "learn": 0.1935805082321167
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "plain_ft",
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.11255313456058502,
+      "learn": 0.1088523268699646
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "grow_mse",
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.12476333230733871,
+      "learn": 0.12441391497850418
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "grow_formA",
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.15010349452495575,
+      "learn": 0.1503225862979889
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "grow_formC",
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.15954896807670593,
+      "learn": 0.15972477197647095
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "cold_retrain",
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.30937111377716064,
+      "learn": 0.30574730038642883
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "plain_ft",
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.14225471019744873,
+      "learn": 0.1375582367181778
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "grow_mse",
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.1605708748102188,
+      "learn": 0.15572145581245422
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "grow_formA",
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.18199172616004944,
+      "learn": 0.17801052331924438
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "grow_formC",
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.1920558363199234,
+      "learn": 0.18828420341014862
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "cold_retrain",
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.5855775475502014,
+      "learn": 0.5655138492584229
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "plain_ft",
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.1701848804950714,
+      "learn": 0.1587347537279129
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "grow_mse",
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.1685873419046402,
+      "learn": 0.15735431015491486
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "grow_formA",
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.17590007185935974,
+      "learn": 0.16470663249492645
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "grow_formC",
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.18154354393482208,
+      "learn": 0.1700429767370224
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "cold_retrain",
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.31151115894317627,
+      "learn": 0.3070496618747711
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "plain_ft",
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.15249785780906677,
+      "learn": 0.13983756303787231
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "grow_mse",
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.16043315827846527,
+      "learn": 0.14922821521759033
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "grow_formA",
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.16728395223617554,
+      "learn": 0.1538722813129425
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "grow_formC",
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.17431889474391937,
+      "learn": 0.15968668460845947
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "cold_retrain",
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.05627810209989548,
+      "learn": 0.038475777953863144
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "plain_ft",
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.04906739667057991,
+      "learn": 0.03609737381339073
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "grow_mse",
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.04895970970392227,
+      "learn": 0.03668621554970741
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "grow_formA",
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.05650271847844124,
+      "learn": 0.040357496589422226
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "grow_formC",
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.06073509529232979,
+      "learn": 0.04180438816547394
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "cold_retrain",
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.05497555062174797,
+      "learn": 0.0383981429040432
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "plain_ft",
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.04944717139005661,
+      "learn": 0.037256792187690735
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "grow_mse",
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.04919871687889099,
+      "learn": 0.0374857522547245
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "grow_formA",
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.05509473755955696,
+      "learn": 0.041274648159742355
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "grow_formC",
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.057791538536548615,
+      "learn": 0.04299308359622955
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "cold_retrain",
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.044850319623947144,
+      "learn": 0.03251072019338608
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "plain_ft",
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.04436131939291954,
+      "learn": 0.033252373337745667
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "grow_mse",
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.04368974640965462,
+      "learn": 0.033170185983181
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "grow_formA",
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.048762768507003784,
+      "learn": 0.03523093834519386
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "grow_formC",
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.05121627822518349,
+      "learn": 0.03653246909379959
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "cold_retrain",
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.05051710084080696,
+      "learn": 0.03530184552073479
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "plain_ft",
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.046735990792512894,
+      "learn": 0.037119269371032715
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "grow_mse",
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.04669136181473732,
+      "learn": 0.036940980702638626
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "grow_formA",
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.05261194333434105,
+      "learn": 0.04211871325969696
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "grow_formC",
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.0550428107380867,
+      "learn": 0.043561264872550964
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "cold_retrain",
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.04873659089207649,
+      "learn": 0.0357271283864975
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "plain_ft",
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.049077171832323074,
+      "learn": 0.042289651930332184
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "grow_mse",
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.04761924594640732,
+      "learn": 0.04035966098308563
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "grow_formA",
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.05442367494106293,
+      "learn": 0.043046027421951294
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "grow_formC",
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.05744538828730583,
+      "learn": 0.04553905874490738
+    }
+  ],
+  "summary": {
+    "shifted/cold_retrain": {
+      "retain_mean": 0.33638604879379275,
+      "retain_std": 0.1303737594042351,
+      "learn_mean": 0.3280211627483368,
+      "learn_std": 0.12568996153544715
+    },
+    "shifted/plain_ft": {
+      "retain_mean": 0.14472582042217255,
+      "retain_std": 0.01871765008562373,
+      "learn_mean": 0.13667768537998198,
+      "learn_std": 0.015965654023542525
+    },
+    "shifted/grow_mse": {
+      "retain_mean": 0.1558213010430336,
+      "retain_std": 0.015818664126713785,
+      "learn_mean": 0.14865432530641556,
+      "learn_std": 0.012457620260594316
+    },
+    "shifted/grow_formA": {
+      "retain_mean": 0.1725422203540802,
+      "retain_std": 0.013064573519931798,
+      "learn_mean": 0.16567991375923158,
+      "learn_std": 0.012475096123513937
+    },
+    "shifted/grow_formC": {
+      "retain_mean": 0.18122184574604033,
+      "retain_std": 0.013698937732022203,
+      "learn_mean": 0.17417098879814147,
+      "learn_std": 0.014097068135947199
+    },
+    "mixed/cold_retrain": {
+      "retain_mean": 0.051071532815694806,
+      "retain_std": 0.004166834792016252,
+      "learn_mean": 0.03608272299170494,
+      "learn_std": 0.0022173543948355062
+    },
+    "mixed/plain_ft": {
+      "retain_mean": 0.04773781001567841,
+      "retain_std": 0.001943601694714044,
+      "learn_mean": 0.037203092128038406,
+      "learn_std": 0.0029227997716104
+    },
+    "mixed/grow_mse": {
+      "retain_mean": 0.047231756150722504,
+      "retain_std": 0.00199212275596246,
+      "learn_mean": 0.03692855909466743,
+      "learn_std": 0.0022920374133767497
+    },
+    "mixed/grow_formA": {
+      "retain_mean": 0.05347916856408119,
+      "retain_std": 0.0026698508818818333,
+      "learn_mean": 0.04040556475520134,
+      "learn_std": 0.002736468376894303
+    },
+    "mixed/grow_formC": {
+      "retain_mean": 0.056446222215890886,
+      "retain_std": 0.003178821134592705,
+      "learn_mean": 0.04208605289459229,
+      "learn_std": 0.00302799711122689
+    }
+  },
+  "protocol": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "steps": 900,
+    "lr": 0.001,
+    "tau": 0.05,
+    "batch": 128
+  }
+}

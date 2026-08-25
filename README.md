@@ -97,6 +97,19 @@ was learned**, and gradients concentrate where the model is still wrong. The
 trigger policy, function preservation, weight semantics, and state-dict
 compatibility each have dedicated regression tests.
 
+**Measured finding — reported honestly.** A controlled ablation
+([`experiments/growth_ablation.py`](experiments/growth_ablation.py), two-stage
+distribution-shift protocol, matched budgets, 5 seeds) tested plain
+fine-tuning vs capacity growth vs growth+error-routing under both pure-shift
+and mixed exposure. Results: function-preserving growth is harmless and the
+warm prior strongly beats cold retraining (~2x), but **error-directed routing
+consistently underperformed plain fine-tuning of the grown network** in both
+regimes. The mechanistic reading: suppressing gradients on already-solved
+samples removes the replay anchoring that retention depends on — the premise
+was backwards. Routing therefore ships **disabled by default**
+(`error_routing=False`); the code path is preserved for future study, and the
+negative result is part of this repository's record.
+
 *Provenance:* the method was conceived in the author's earlier 2D research
 prototype (`airfoil_ai`, formulations A/B/C for error-directed expansion) and
 is re-engineered here for 3D production workflows — residual-block expansion,
