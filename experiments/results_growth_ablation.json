@@ -47,6 +47,26 @@
     },
     {
       "protocol": "shifted",
+      "seed": 0,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.14859366416931152,
+      "learn": 0.14217285811901093
+    },
+    {
+      "protocol": "shifted",
+      "seed": 0,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.01744992285966873,
+      "learn_before": 0.05828201770782471,
+      "retain": 0.11087548732757568,
+      "learn": 0.10777751356363297
+    },
+    {
+      "protocol": "shifted",
       "seed": 1,
       "arm": "cold_retrain",
       "retain_before": 0.019931845366954803,
@@ -89,6 +109,26 @@
       "learn_before": 0.05719595402479172,
       "retain": 0.15954896807670593,
       "learn": 0.15972477197647095
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "EWC",
+      "lam": 5000.0,
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.15780723094940186,
+      "learn": 0.16174475848674774
+    },
+    {
+      "protocol": "shifted",
+      "seed": 1,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.019931845366954803,
+      "learn_before": 0.05719595402479172,
+      "retain": 0.10922253131866455,
+      "learn": 0.11498662829399109
     },
     {
       "protocol": "shifted",
@@ -137,6 +177,26 @@
     },
     {
       "protocol": "shifted",
+      "seed": 2,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.14029079675674438,
+      "learn": 0.1338638812303543
+    },
+    {
+      "protocol": "shifted",
+      "seed": 2,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.02236342243850231,
+      "learn_before": 0.04800393804907799,
+      "retain": 0.10115303099155426,
+      "learn": 0.09855917096138
+    },
+    {
+      "protocol": "shifted",
       "seed": 3,
       "arm": "cold_retrain",
       "retain_before": 0.01525694690644741,
@@ -182,6 +242,26 @@
     },
     {
       "protocol": "shifted",
+      "seed": 3,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.22085843980312347,
+      "learn": 0.20863200724124908
+    },
+    {
+      "protocol": "shifted",
+      "seed": 3,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.01525694690644741,
+      "learn_before": 0.05569339171051979,
+      "retain": 0.15878699719905853,
+      "learn": 0.15164095163345337
+    },
+    {
+      "protocol": "shifted",
       "seed": 4,
       "arm": "cold_retrain",
       "retain_before": 0.022213319316506386,
@@ -224,6 +304,26 @@
       "learn_before": 0.057241540402173996,
       "retain": 0.17431889474391937,
       "learn": 0.15968668460845947
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.12341415882110596,
+      "learn": 0.10980108380317688
+    },
+    {
+      "protocol": "shifted",
+      "seed": 4,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.022213319316506386,
+      "learn_before": 0.057241540402173996,
+      "retain": 0.11952979862689972,
+      "learn": 0.11546134203672409
     },
     {
       "protocol": "mixed",
@@ -272,6 +372,26 @@
     },
     {
       "protocol": "mixed",
+      "seed": 0,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.05331418663263321,
+      "learn": 0.034168846905231476
+    },
+    {
+      "protocol": "mixed",
+      "seed": 0,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.017834726721048355,
+      "learn_before": 0.05870962515473366,
+      "retain": 0.039405837655067444,
+      "learn": 0.03795430809259415
+    },
+    {
+      "protocol": "mixed",
       "seed": 1,
       "arm": "cold_retrain",
       "retain_before": 0.019772853702306747,
@@ -314,6 +434,26 @@
       "learn_before": 0.05739099532365799,
       "retain": 0.057791538536548615,
       "learn": 0.04299308359622955
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.048769984394311905,
+      "learn": 0.03797422721982002
+    },
+    {
+      "protocol": "mixed",
+      "seed": 1,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.019772853702306747,
+      "learn_before": 0.05739099532365799,
+      "retain": 0.0365852527320385,
+      "learn": 0.041117988526821136
     },
     {
       "protocol": "mixed",
@@ -362,6 +502,26 @@
     },
     {
       "protocol": "mixed",
+      "seed": 2,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.048968344926834106,
+      "learn": 0.03314857929944992
+    },
+    {
+      "protocol": "mixed",
+      "seed": 2,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.02299860119819641,
+      "learn_before": 0.047619499266147614,
+      "retain": 0.03379535302519798,
+      "learn": 0.0323837585747242
+    },
+    {
+      "protocol": "mixed",
       "seed": 3,
       "arm": "cold_retrain",
       "retain_before": 0.014745513908565044,
@@ -407,6 +567,26 @@
     },
     {
       "protocol": "mixed",
+      "seed": 3,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.0497596450150013,
+      "learn": 0.03688570484519005
+    },
+    {
+      "protocol": "mixed",
+      "seed": 3,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.014745513908565044,
+      "learn_before": 0.05475538969039917,
+      "retain": 0.035111598670482635,
+      "learn": 0.036684803664684296
+    },
+    {
+      "protocol": "mixed",
       "seed": 4,
       "arm": "cold_retrain",
       "retain_before": 0.021974191069602966,
@@ -449,6 +629,26 @@
       "learn_before": 0.05737601965665817,
       "retain": 0.05744538828730583,
       "learn": 0.04553905874490738
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "EWC",
+      "lam": 100.0,
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.05068298429250717,
+      "learn": 0.042216379195451736
+    },
+    {
+      "protocol": "mixed",
+      "seed": 4,
+      "arm": "LWF",
+      "lam": 0.5,
+      "retain_before": 0.021974191069602966,
+      "learn_before": 0.05737601965665817,
+      "retain": 0.03581424057483673,
+      "learn": 0.040374912321567535
     }
   ],
   "summary": {
@@ -482,6 +682,18 @@
       "learn_mean": 0.17417098879814147,
       "learn_std": 0.014097068135947199
     },
+    "shifted/EWC": {
+      "retain_mean": 0.15819285809993744,
+      "retain_std": 0.033314591657345946,
+      "learn_mean": 0.1512429177761078,
+      "learn_std": 0.03318288337209878
+    },
+    "shifted/LWF": {
+      "retain_mean": 0.11991356909275055,
+      "retain_std": 0.02029400745557226,
+      "learn_mean": 0.1176851212978363,
+      "learn_std": 0.01805097304724931
+    },
     "mixed/cold_retrain": {
       "retain_mean": 0.051071532815694806,
       "retain_std": 0.004166834792016252,
@@ -511,6 +723,18 @@
       "retain_std": 0.003178821134592705,
       "learn_mean": 0.04208605289459229,
       "learn_std": 0.00302799711122689
+    },
+    "mixed/EWC": {
+      "retain_mean": 0.05029902905225754,
+      "retain_std": 0.0016515586461464133,
+      "learn_mean": 0.03687874749302864,
+      "learn_std": 0.0031921200596281415
+    },
+    "mixed/LWF": {
+      "retain_mean": 0.03614245653152466,
+      "retain_std": 0.0018721652355490712,
+      "learn_mean": 0.037703154236078264,
+      "learn_std": 0.0031046890616789427
     }
   },
   "protocol": {

@@ -99,6 +99,94 @@ def rmse(model, x, y):
     return float(np.sqrt(np.mean((pred - y) ** 2)))
 
 
+# ---------------------------------------------------------------------------
+# published-baseline arms (Phase 1 of the comparison note)
+# ---------------------------------------------------------------------------
+
+def compute_fisher(model, x1, y1, n_batches=20, batch=128):
+    """Diagonal empirical Fisher: mean squared loss-gradient per parameter,
+    estimated on stage-1 data (Kirkpatrick et al. 2017)."""
+    model = copy.deepcopy(model).eval()
+    fisher = {n: torch.zeros_like(p)
+              for n, p in model.named_parameters()}
+    rng = np.random.default_rng(0)
+    xt = torch.tensor(x1)
+    yt = torch.tensor(y1)
+    for _ in range(n_batches):
+        idx = torch.tensor(rng.integers(0, len(xt), min(batch, len(xt))))
+        model.zero_grad()
+        loss = ((model(xt[idx]) - yt[idx]) ** 2).mean()
+        loss.backward()
+        for n, p in model.named_parameters():
+            if p.grad is not None:
+                fisher[n] += p.grad.detach() ** 2
+    for n in fisher:
+        fisher[n] /= n_batches
+    return fisher
+
+
+def _ewc_penalty(model, fisher, theta_star):
+    return sum((fisher[n] * (p - theta_star[n]) ** 2).sum()
+               for n, p in model.named_parameters())
+
+
+def train_ewc(pristine, data, seed, lam):
+    """EWC: stage-2 loss + lam/2 * F (theta - theta*)^2."""
+    torch.manual_seed(seed)
+    model = copy.deepcopy(pristine)
+    theta_star = {n: p.detach().clone()
+                  for n, p in model.named_parameters()}
+    fisher = compute_fisher(model, data["x1"], data["y1"])
+    opt = torch.optim.Adam(model.parameters(), lr=LR)
+    xt = torch.tensor(data["x2"])
+    yt = torch.tensor(data["y2"])
+    rng = np.random.default_rng(seed)
+    for _ in range(STEPS):
+        idx = torch.tensor(rng.integers(0, len(xt), BATCH))
+        loss = ((model(xt[idx]) - yt[idx]) ** 2).mean() \
+            + 0.5 * lam * _ewc_penalty(model, fisher, theta_star)
+        opt.zero_grad(); loss.backward(); opt.step()
+    return model
+
+
+def train_lwf(pristine, data, seed, lam):
+    """LwF-style regression adaptation: new-stream MSE + uniform-weight
+    distillation of the frozen pre-expansion function's outputs
+    (Li & Hoiem 2016 spirit; soft-target machinery is classification-only)."""
+    torch.manual_seed(seed)
+    model = copy.deepcopy(pristine)
+    ref = copy.deepcopy(model).eval()
+    with torch.no_grad():
+        base_out = ref(torch.tensor(data["x2"])).numpy()
+    opt = torch.optim.Adam(model.parameters(), lr=LR)
+    xt = torch.tensor(data["x2"])
+    yt = torch.tensor(data["y2"])
+    bt = torch.tensor(base_out.astype(np.float32))
+    rng = np.random.default_rng(seed)
+    for _ in range(STEPS):
+        idx = torch.tensor(rng.integers(0, len(xt), BATCH))
+        pred = model(xt[idx])
+        loss = ((pred - yt[idx]) ** 2).mean() \
+            + lam * ((pred - bt[idx]) ** 2).mean()
+        opt.zero_grad(); loss.backward(); opt.step()
+    return model
+
+
+def select_and_score(make_and_train, lambdas, val, arms_tag):
+    """Trains one model per lambda, selects by validation RMSE (a held-out
+    20% slice of the stage-2 stream - never a test probe), returns the
+    winning model + chosen lambda."""
+    xv, yv = val
+    best = None
+    for lam in lambdas:
+        model = make_and_train(lam)
+        v = rmse(model, xv, yv)
+        if best is None or v < best[1]:
+            best = (model, v, lam)
+    print(f"      {arms_tag}: lambda={best[2]} (val {best[1]:.4f})")
+    return best[0], best[2]
+
+
 def train_arm(arm, base, data, seed):
     torch.manual_seed(seed)
     x2, y2 = data["x2"], data["y2"]
@@ -208,11 +296,37 @@ def main():
                       "{retain_before:.4f}->{retain:.4f}   learn "
                       "{learn_before:.4f}->{learn:.4f}".format(**row))
 
+            # ---- published baselines: EWC & LwF (lambda selected on a
+            #      held-out 20% slice of the stage-2 stream, never probes)
+            perm2 = rng.permutation(len(x2))
+            nv = max(1, int(0.2 * len(x2)))
+            vi, ti = perm2[:nv], perm2[nv:]
+            d_sub = dict(x1=data["x1"], y1=data["y1"],
+                         x2=data["x2"][ti], y2=data["y2"][ti])
+            val = (data["x2"][vi], data["y2"][vi])
+
+            ewc_model, ewc_lam = select_and_score(
+                lambda lam: train_ewc(copy.deepcopy(pristine), d_sub,
+                                      seed, lam),
+                (100.0, 5000.0), val, f"[{proto}] EWC     ")
+            rows.append(dict(protocol=proto, seed=seed, arm="EWC",
+                             lam=ewc_lam, retain_before=pre_ret,
+                             learn_before=pre_lrn, retain=rmse(ewc_model, xr, yr),
+                             learn=rmse(ewc_model, xl, yl)))
+            lwf_model, lwf_lam = select_and_score(
+                lambda lam: train_lwf(copy.deepcopy(pristine), d_sub,
+                                      seed, lam),
+                (0.5, 2.0, 10.0), val, f"[{proto}] LwF     ")
+            rows.append(dict(protocol=proto, seed=seed, arm="LWF",
+                             lam=lwf_lam, retain_before=pre_ret,
+                             learn_before=pre_lrn, retain=rmse(lwf_model, xr, yr),
+                             learn=rmse(lwf_model, xl, yl)))
+
     print("\n=== mean +- std over {} seeds ===".format(len(SEEDS)))
     summary = {}
     for proto in ("shifted", "mixed"):
         for arm in ("cold_retrain", "plain_ft", "grow_mse",
-                    "grow_formA", "grow_formC"):
+                    "grow_formA", "grow_formC", "EWC", "LWF"):
             rs = [r["retain"] for r in rows
                   if r["arm"] == arm and r["protocol"] == proto]
             ls = [r["learn"] for r in rows
