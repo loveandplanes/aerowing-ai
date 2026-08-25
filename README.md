@@ -1,6 +1,6 @@
 # AeroWing AI Pro
 
-[![CI](https://github.com/OWNER/aerowing-ai/actions/workflows/ci.yml/badge.svg)](../../actions)
+[![CI](https://github.com/loveandplanes/aerowing-ai/actions/workflows/ci.yml/badge.svg)](../../actions)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Tests](https://img.shields.io/badge/tests-80%20passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -116,7 +116,7 @@ masked multi-output losses, and a fully gated continual-learning ecosystem.
 ## Installation
 
 ```bash
-git clone https://github.com/OWNER/aerowing-ai.git
+git clone https://github.com/loveandplanes/aerowing-ai.git
 cd aerowing-ai
 python -m pip install -e ".[dev]"
 pytest tests/ -q          # 80 passing, 1 xfail-documented
