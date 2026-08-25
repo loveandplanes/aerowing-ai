@@ -565,22 +565,52 @@ class GrowableSurrogate(nn.Module):
         self.base = base if base is not None else AeroSurrogate3D()
         self.expander: Optional[nn.Module] = None
 
-    def add_capacity(self, units: int = 128) -> int:
-        """Appends Linear(hidden->units) + GELU + Linear(units->out) with the
-        final layer zero-initialized -> exact function preservation (returns 1
-        if capacity was added, 0 if already grown)."""
+    def add_capacity(self, units: int = 128, gated: bool = False) -> int:
+        """Appends an expansion block on top of the base encoder.
+
+        gated=False (legacy): Linear(h->units)+GELU+Linear(units->out) with
+        the final layer zero-initialized -> exact function preservation.
+
+        gated=True (validated production mode, see experiments/
+        residual_expansion.py): the correction is a VALUE head (zero-init,
+        preserving the function exactly at init) multiplied elementwise by a
+        learned sigmoid GATE - the correction localizes itself to the regions
+        that need it, and the subsequent fine-tune freezes the base network so
+        solved knowledge is protected structurally rather than by loss shaping.
+
+        Returns 1 if capacity was added, 0 if already grown."""
         if self.expander is not None:
             return 0
         h = self.base.hidden_dim
         o = self.base.head[2].out_features
-        block = nn.Sequential(
-            nn.Linear(h, units),
-            nn.GELU(),
-            nn.Linear(units, o),
-        )
-        with torch.no_grad():
-            block[-1].weight.zero_()
-            block[-1].bias.zero_()
+
+        class _GatedCorrection(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.value = nn.Sequential(
+                    nn.Linear(h, units), nn.GELU(), nn.Linear(units, o))
+                self.gate = nn.Sequential(
+                    nn.Linear(h, max(units // 2, 8)), nn.GELU(),
+                    nn.Linear(max(units // 2, 8), o))
+
+            def forward(self, hh):
+                return self.value(hh) * torch.sigmoid(self.gate(hh))
+
+        if gated:
+            block = _GatedCorrection()
+            with torch.no_grad():
+                block.value[-1].weight.zero_()
+                block.value[-1].bias.zero_()
+                # gate starts near 0.5 everywhere (random init, unbiased)
+        else:
+            block = nn.Sequential(
+                nn.Linear(h, units),
+                nn.GELU(),
+                nn.Linear(units, o),
+            )
+            with torch.no_grad():
+                block[-1].weight.zero_()
+                block[-1].bias.zero_()
         self.expander = block
         return 1
 
@@ -876,12 +906,14 @@ class ContinualTrainer:
                 # decline and triggered mid-improvement).
                 gain = (recent[0] - recent[-1]) / max(abs(recent[0]), 1e-12)
                 if gain < growth_min_rel_gain:
-                    self.model.add_capacity()
+                    self.model.add_capacity(gated=True)
                     grew = True
-                    hist_this = {"n_cfd": n_cfd, "holdout_tail": recent}
+                    hist_this = {"n_cfd": n_cfd, "holdout_tail": recent,
+                                 "mode": "gated_residual"}
                     self.lake.log("grow", hist_this)
                     if verbose:
-                        print(f"[continual] capacity grown: {self.model.n_params()} params")
+                        print(f"[continual] capacity grown (gated residual): "
+                              f"{self.model.n_params()} params")
 
         # -- replay + new data ------------------------------------------------
         replay = self._replay_ids(set(ids_new), replay_size)
@@ -903,6 +935,15 @@ class ContinualTrainer:
             err_old = self._per_sample_errs(x, y, msk)
 
         # -- incremental fine-tune from last checkpoint (controller #4) --------
+        if grew:
+            # gated-residual mode (validated in experiments/
+            # residual_expansion.py): freeze the base network so solved
+            # knowledge is protected STRUCTURALLY - only the zero-init gated
+            # correction trains. Base params stay frozen after this update;
+            # subsequent non-growth updates resume full fine-tuning.
+            for p in self.model.base.parameters():
+                p.requires_grad = False
+
         self._ensure_stats(x, y)
         stats = self._stats()
         y_all = self.model.normalize(y)

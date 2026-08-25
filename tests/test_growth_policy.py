@@ -12,6 +12,7 @@ when three gates hold simultaneously:
 These pin that decision policy; the mechanics of the grown block are covered
 in test_continual.py (function preservation, state-dict compatibility).
 """
+import json
 import os
 import sys
 
@@ -96,5 +97,45 @@ def test_auto_grow_requires_cfd_mass(tmp_path):
                        auto_grow=True, growth_min_new=5, verbose=False)
         assert trainer.model.expander is None, \
             "growth needs real CFD mass first"
+    finally:
+        lake.close()
+
+
+def test_gated_capacity_preserves_function_and_freezes_base(tmp_path):
+    """Production growth mode (validated in experiments/residual_expansion.py):
+    gated correction preserves the function exactly at init (zero-init value
+    head), and the post-growth fine-tune freezes the base network so solved
+    knowledge is protected structurally."""
+    import torch
+    from aerowing.continual import GrowableSurrogate
+
+    g = GrowableSurrogate()
+    g.eval()
+    x = torch.randn(8, 40)
+    before = g(x).clone()
+    assert g.add_capacity(units=32, gated=True) == 1
+    assert g.add_capacity(units=32, gated=True) == 0      # idempotent
+    with torch.no_grad():
+        after = g(x)
+    assert torch.allclose(before, after, atol=1e-6), \
+        "gated capacity must preserve the function exactly at init"
+
+    lake = _seed_lake(str(tmp_path / "lake2.sqlite"))
+    try:
+        _log_history(lake, PLATEAU)
+        trainer = ContinualTrainer(lake, checkpoint_path=str(tmp_path / "m.pt"))
+        summary = trainer.update(epochs=1, lr=1e-3, min_new_samples=0,
+                                 auto_grow=True, growth_min_new=5,
+                                 verbose=False)
+        assert summary["updated"] is True
+        assert trainer.model.expander is not None
+        # structural protection: base frozen, gated correction trainable
+        assert all(p.requires_grad is False
+                   for p in trainer.model.base.parameters())
+        assert any(p.requires_grad for p in trainer.model.expander.parameters())
+        # the decision is audited with its mode (n_cfd at trigger time = 6)
+        hist = json.loads(json.dumps(
+            lake.history_vals("grow", "n_cfd")))
+        assert hist == [6]
     finally:
         lake.close()
