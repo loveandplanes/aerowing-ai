@@ -97,6 +97,11 @@ was learned**, and gradients concentrate where the model is still wrong. The
 trigger policy, function preservation, weight semantics, and state-dict
 compatibility each have dedicated regression tests.
 
+*Provenance:* the method was conceived in the author's earlier 2D research
+prototype (`airfoil_ai`, formulations A/B/C for error-directed expansion) and
+is re-engineered here for 3D production workflows — residual-block expansion,
+masked multi-output losses, and a fully gated continual-learning ecosystem.
+
 ## Installation
 
 ```bash
