@@ -44,7 +44,7 @@ at α = 1.5° / 3.06° / 6° (M = 0.8395, Re = 11.7×10⁶ on MAC) — with a
 coarse-to-medium refinement trend for discretization error bars.
 
 **The flywheel learns from real CFD.** Money slide on quality-gated SU2
-anchors (9 candidate designs / 5 holdout; CD RMSE vs RANS truth):
+anchors (9 candidate designs / 5 holdout; CD RMSE vs truth):
 
 ```
   CFD units | CD RMSE | vs frozen preliminary tool
@@ -53,6 +53,24 @@ anchors (9 candidate designs / 5 holdout; CD RMSE vs RANS truth):
           4 | 0.02749 |  -20%
           9 | 0.01496 |  -57%    (every further run shrinks it further)
 ```
+
+**Against published continual-learning baselines** (two-stage distribution-
+shift protocol, matched budgets, 5 seeds; lambda selected on held-out stream
+slices — never test probes). Gated-residual expansion wins both axes:
+
+```
+  method                     retain RMSE      learn RMSE
+  cold retrain               0.336 +- 0.130   0.328 +- 0.126
+  plain fine-tune            0.145 +- 0.019   0.137 +- 0.016
+  EWC  (Kirkpatrick 2017)    0.158 +- 0.033   0.151 +- 0.033
+  LwF-style (Li&Hoiem 2016)  0.120 +- 0.020   0.118 +- 0.018
+  gated residual (this repo) 0.081 +- 0.012   0.072 +- 0.016
+```
+
+Retention improvements are statistically significant vs every baseline
+(Welch t, p < 0.01). Reproduce:
+`python experiments/growth_ablation.py` +
+`python experiments/residual_expansion.py`.
 
 Every link is instrumented: diverged runs are rejected by physics-bounds
 gates, partial solver deliveries train only delivered columns, promotion is
