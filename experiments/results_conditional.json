@@ -1,0 +1,434 @@
+{
+  "rows": [
+    {
+      "protocol": "EASY",
+      "seed": 0,
+      "arm": "plain_ft",
+      "retain_before": 0.01898937299847603,
+      "learn_before": 0.20380617678165436,
+      "retain": 0.13509462773799896,
+      "learn": 0.06225348263978958
+    },
+    {
+      "protocol": "EASY",
+      "seed": 0,
+      "arm": "R2_frozen",
+      "retain_before": 0.01898937299847603,
+      "learn_before": 0.20380617678165436,
+      "retain": 0.07529029995203018,
+      "learn": 0.07736437767744064
+    },
+    {
+      "protocol": "EASY",
+      "seed": 0,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.01898937299847603,
+      "learn_before": 0.20380617678165436,
+      "retain": 0.08414866775274277,
+      "learn": 0.0765753760933876
+    },
+    {
+      "protocol": "EASY",
+      "seed": 0,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.01898937299847603,
+      "learn_before": 0.20380617678165436,
+      "retain": 0.07824135571718216,
+      "learn": 0.07797195762395859,
+      "escalated_at": 600,
+      "levels": 1
+    },
+    {
+      "protocol": "EASY",
+      "seed": 1,
+      "arm": "plain_ft",
+      "retain_before": 0.017257988452911377,
+      "learn_before": 0.18696260452270508,
+      "retain": 0.13462284207344055,
+      "learn": 0.06434322148561478
+    },
+    {
+      "protocol": "EASY",
+      "seed": 1,
+      "arm": "R2_frozen",
+      "retain_before": 0.017257988452911377,
+      "learn_before": 0.18696260452270508,
+      "retain": 0.08686785399913788,
+      "learn": 0.08066782355308533
+    },
+    {
+      "protocol": "EASY",
+      "seed": 1,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.017257988452911377,
+      "learn_before": 0.18696260452270508,
+      "retain": 0.08249664306640625,
+      "learn": 0.07776879519224167
+    },
+    {
+      "protocol": "EASY",
+      "seed": 1,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.017257988452911377,
+      "learn_before": 0.18696260452270508,
+      "retain": 0.08085252344608307,
+      "learn": 0.07998485118150711,
+      "escalated_at": 510,
+      "levels": 1
+    },
+    {
+      "protocol": "EASY",
+      "seed": 2,
+      "arm": "plain_ft",
+      "retain_before": 0.02080659382045269,
+      "learn_before": 0.21153947710990906,
+      "retain": 0.18275931477546692,
+      "learn": 0.0650906041264534
+    },
+    {
+      "protocol": "EASY",
+      "seed": 2,
+      "arm": "R2_frozen",
+      "retain_before": 0.02080659382045269,
+      "learn_before": 0.21153947710990906,
+      "retain": 0.09430945664644241,
+      "learn": 0.0808386355638504
+    },
+    {
+      "protocol": "EASY",
+      "seed": 2,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.02080659382045269,
+      "learn_before": 0.21153947710990906,
+      "retain": 0.07014641910791397,
+      "learn": 0.07278674840927124
+    },
+    {
+      "protocol": "EASY",
+      "seed": 2,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.02080659382045269,
+      "learn_before": 0.21153947710990906,
+      "retain": 0.07019639760255814,
+      "learn": 0.0790398046374321,
+      "escalated_at": 450,
+      "levels": 1
+    },
+    {
+      "protocol": "EASY",
+      "seed": 3,
+      "arm": "plain_ft",
+      "retain_before": 0.016707628965377808,
+      "learn_before": 0.21599668264389038,
+      "retain": 0.1541796177625656,
+      "learn": 0.06221272423863411
+    },
+    {
+      "protocol": "EASY",
+      "seed": 3,
+      "arm": "R2_frozen",
+      "retain_before": 0.016707628965377808,
+      "learn_before": 0.21599668264389038,
+      "retain": 0.07702285796403885,
+      "learn": 0.07616662234067917
+    },
+    {
+      "protocol": "EASY",
+      "seed": 3,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.016707628965377808,
+      "learn_before": 0.21599668264389038,
+      "retain": 0.07514063268899918,
+      "learn": 0.0750761479139328
+    },
+    {
+      "protocol": "EASY",
+      "seed": 3,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.016707628965377808,
+      "learn_before": 0.21599668264389038,
+      "retain": 0.06991786509752274,
+      "learn": 0.07710788398981094,
+      "escalated_at": 465,
+      "levels": 1
+    },
+    {
+      "protocol": "EASY",
+      "seed": 4,
+      "arm": "plain_ft",
+      "retain_before": 0.01927676610648632,
+      "learn_before": 0.21080456674098969,
+      "retain": 0.14911173284053802,
+      "learn": 0.06796935200691223
+    },
+    {
+      "protocol": "EASY",
+      "seed": 4,
+      "arm": "R2_frozen",
+      "retain_before": 0.01927676610648632,
+      "learn_before": 0.21080456674098969,
+      "retain": 0.06436862051486969,
+      "learn": 0.07947926968336105
+    },
+    {
+      "protocol": "EASY",
+      "seed": 4,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.01927676610648632,
+      "learn_before": 0.21080456674098969,
+      "retain": 0.0708673819899559,
+      "learn": 0.07371050864458084
+    },
+    {
+      "protocol": "EASY",
+      "seed": 4,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.01927676610648632,
+      "learn_before": 0.21080456674098969,
+      "retain": 0.06401802599430084,
+      "learn": 0.07821987569332123,
+      "escalated_at": 450,
+      "levels": 2
+    },
+    {
+      "protocol": "HARD",
+      "seed": 0,
+      "arm": "plain_ft",
+      "retain_before": 0.013867447152733803,
+      "learn_before": 0.2860001027584076,
+      "retain": 0.08587781339883804,
+      "learn": 0.07390907406806946
+    },
+    {
+      "protocol": "HARD",
+      "seed": 0,
+      "arm": "R2_frozen",
+      "retain_before": 0.013867447152733803,
+      "learn_before": 0.2860001027584076,
+      "retain": 0.08090295642614365,
+      "learn": 0.07710534334182739
+    },
+    {
+      "protocol": "HARD",
+      "seed": 0,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.013867447152733803,
+      "learn_before": 0.2860001027584076,
+      "retain": 0.0792754516005516,
+      "learn": 0.07589145004749298
+    },
+    {
+      "protocol": "HARD",
+      "seed": 0,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.013867447152733803,
+      "learn_before": 0.2860001027584076,
+      "retain": 0.08409611135721207,
+      "learn": 0.07681966572999954,
+      "escalated_at": 810,
+      "levels": 1
+    },
+    {
+      "protocol": "HARD",
+      "seed": 1,
+      "arm": "plain_ft",
+      "retain_before": 0.015469792298972607,
+      "learn_before": 0.23951071500778198,
+      "retain": 0.2158472090959549,
+      "learn": 0.07126235961914062
+    },
+    {
+      "protocol": "HARD",
+      "seed": 1,
+      "arm": "R2_frozen",
+      "retain_before": 0.015469792298972607,
+      "learn_before": 0.23951071500778198,
+      "retain": 0.09843417257070541,
+      "learn": 0.08745763450860977
+    },
+    {
+      "protocol": "HARD",
+      "seed": 1,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.015469792298972607,
+      "learn_before": 0.23951071500778198,
+      "retain": 0.07162701338529587,
+      "learn": 0.08801276236772537
+    },
+    {
+      "protocol": "HARD",
+      "seed": 1,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.015469792298972607,
+      "learn_before": 0.23951071500778198,
+      "retain": 0.09077215194702148,
+      "learn": 0.08717475086450577,
+      "escalated_at": 645,
+      "levels": 1
+    },
+    {
+      "protocol": "HARD",
+      "seed": 2,
+      "arm": "plain_ft",
+      "retain_before": 0.016166312620043755,
+      "learn_before": 0.18984566628932953,
+      "retain": 0.07748465985059738,
+      "learn": 0.07176198065280914
+    },
+    {
+      "protocol": "HARD",
+      "seed": 2,
+      "arm": "R2_frozen",
+      "retain_before": 0.016166312620043755,
+      "learn_before": 0.18984566628932953,
+      "retain": 0.2870323061943054,
+      "learn": 0.08309021592140198
+    },
+    {
+      "protocol": "HARD",
+      "seed": 2,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.016166312620043755,
+      "learn_before": 0.18984566628932953,
+      "retain": 0.18699656426906586,
+      "learn": 0.08152655512094498
+    },
+    {
+      "protocol": "HARD",
+      "seed": 2,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.016166312620043755,
+      "learn_before": 0.18984566628932953,
+      "retain": 0.2470014989376068,
+      "learn": 0.08149343729019165,
+      "escalated_at": 900,
+      "levels": 1
+    },
+    {
+      "protocol": "HARD",
+      "seed": 3,
+      "arm": "plain_ft",
+      "retain_before": 0.014752879738807678,
+      "learn_before": 0.22526733577251434,
+      "retain": 0.13415028154850006,
+      "learn": 0.07073452323675156
+    },
+    {
+      "protocol": "HARD",
+      "seed": 3,
+      "arm": "R2_frozen",
+      "retain_before": 0.014752879738807678,
+      "learn_before": 0.22526733577251434,
+      "retain": 0.0710437148809433,
+      "learn": 0.07126074284315109
+    },
+    {
+      "protocol": "HARD",
+      "seed": 3,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.014752879738807678,
+      "learn_before": 0.22526733577251434,
+      "retain": 0.06582130491733551,
+      "learn": 0.07077908515930176
+    },
+    {
+      "protocol": "HARD",
+      "seed": 3,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.014752879738807678,
+      "learn_before": 0.22526733577251434,
+      "retain": 0.06480666249990463,
+      "learn": 0.07100211828947067,
+      "escalated_at": 570,
+      "levels": 1
+    },
+    {
+      "protocol": "HARD",
+      "seed": 4,
+      "arm": "plain_ft",
+      "retain_before": 0.014990808442234993,
+      "learn_before": 0.2575366497039795,
+      "retain": 0.13294155895709991,
+      "learn": 0.07105366885662079
+    },
+    {
+      "protocol": "HARD",
+      "seed": 4,
+      "arm": "R2_frozen",
+      "retain_before": 0.014990808442234993,
+      "learn_before": 0.2575366497039795,
+      "retain": 0.055253323167562485,
+      "learn": 0.07529135048389435
+    },
+    {
+      "protocol": "HARD",
+      "seed": 4,
+      "arm": "GRADED_uncond",
+      "retain_before": 0.014990808442234993,
+      "learn_before": 0.2575366497039795,
+      "retain": 0.04212874174118042,
+      "learn": 0.07295376807451248
+    },
+    {
+      "protocol": "HARD",
+      "seed": 4,
+      "arm": "CONDITIONAL",
+      "retain_before": 0.014990808442234993,
+      "learn_before": 0.2575366497039795,
+      "retain": 0.054441362619400024,
+      "learn": 0.07352851331233978,
+      "escalated_at": 825,
+      "levels": 1
+    }
+  ],
+  "summary": {
+    "EASY/plain_ft": {
+      "retain_mean": 0.151153627038002,
+      "retain_std": 0.017569312787920826,
+      "learn_mean": 0.06437387689948082,
+      "learn_std": 0.0021264398209429017
+    },
+    "EASY/R2_frozen": {
+      "retain_mean": 0.0795718178153038,
+      "retain_std": 0.010260564721356419,
+      "learn_mean": 0.07890334576368332,
+      "learn_std": 0.001846537013204648
+    },
+    "EASY/GRADED_uncond": {
+      "retain_mean": 0.07655994892120362,
+      "retain_std": 0.005803208291583705,
+      "learn_mean": 0.07518351525068283,
+      "learn_std": 0.0018191600523534096
+    },
+    "EASY/CONDITIONAL": {
+      "retain_mean": 0.07264523357152938,
+      "retain_std": 0.0061080313871253004,
+      "learn_mean": 0.07846487462520599,
+      "learn_std": 0.000978293256846492
+    },
+    "HARD/plain_ft": {
+      "retain_mean": 0.12926030457019805,
+      "retain_std": 0.0491884406551486,
+      "learn_mean": 0.07174432128667832,
+      "learn_std": 0.0011327353077845497
+    },
+    "HARD/R2_frozen": {
+      "retain_mean": 0.11853329464793205,
+      "retain_std": 0.08540673150527174,
+      "learn_mean": 0.07884105741977691,
+      "learn_std": 0.00575108755752132
+    },
+    "HARD/GRADED_uncond": {
+      "retain_mean": 0.08916981518268585,
+      "retain_std": 0.050465308251407326,
+      "learn_mean": 0.07783272415399552,
+      "learn_std": 0.006238656039484162
+    },
+    "HARD/CONDITIONAL": {
+      "retain_mean": 0.108223557472229,
+      "retain_std": 0.07060248366797252,
+      "learn_mean": 0.07800369709730148,
+      "learn_std": 0.005774734968897353
+    }
+  }
+}
