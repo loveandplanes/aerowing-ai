@@ -131,6 +131,18 @@ prototype (`airfoil_ai`, formulations A/B/C for error-directed expansion) and
 is re-engineered here for 3D production workflows — residual-block expansion,
 masked multi-output losses, and a fully gated continual-learning ecosystem.
 
+**Related work.** Expansion-based learning is an active field this project
+builds on rather than competes with: Net2Net (Chen et al., 2015) established
+function-preserving transformation; Self-Expanding Neural Networks
+(arXiv:2307.04526) grow via a natural-gradient expansion score; GradMax
+(Evci et al., 2022) initializes grown neurons to improve training dynamics;
+mistake-targeted manifold folding (GrowNNs) localizes growth at clustered
+mispredictions; EDN (Perrett et al., 2022) explores error-driven neurogenesis.
+This repository's contribution is the industrial integration — quality-gated
+streaming CFD truth, delivery masks, holdout promotion — plus a controlled
+comparison showing why loss-shaping protection fails where structural gating
+succeeds in physics-surrogate regression.
+
 ## Installation
 
 ```bash
