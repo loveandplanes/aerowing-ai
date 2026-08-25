@@ -138,8 +138,19 @@ function-preserving transformation; Self-Expanding Neural Networks
 (Evci et al., 2022) initializes grown neurons to improve training dynamics;
 mistake-targeted manifold folding (GrowNNs) grows at clustered
 mispredictions and protects the correction during fine-tuning — the closest
-published relative to this repository's growth mode; EDN (Perrett et al.,
-2022) explores error-driven neurogenesis.
+published relative to this repository's growth mode; Progressive Networks
+(Rusu et al., 2016) introduced parallel frozen-reference columns; and
+GEM/A-GEM (Lopez-Paz 2017, Chaudhry 2018) plus Orthogonal Gradient Descent
+steer new-task gradients away from stored old-sample gradients. EDN (Perrett
+et al., 2022) explores error-driven neurogenesis.
+
+This repository's distinct contribution is a controlled study of *how* the
+frozen pre-expansion reference should communicate with the expanding network:
+using per-sample old-vs-new residual comparison as a gradient **filter**
+(suppress solved regions) measurably fails, while using it as an **anchor**
+(distill toward the reference where it was accurate, fit its residuals
+elsewhere) wins against plain fine-tuning, EWC and LwF — validated in the
+industrial setting of quality-gated streaming CFD truth with delivery masks.
 This repository's contribution is the industrial integration — quality-gated
 streaming CFD truth, delivery masks, holdout promotion — plus a controlled
 comparison showing why loss-shaping protection fails where structural gating
