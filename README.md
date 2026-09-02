@@ -87,6 +87,11 @@ Every link is instrumented: diverged runs are rejected by physics-bounds
 gates, partial solver deliveries train only delivered columns, promotion is
 holdout-gated, and capacity growth preserves the learned function exactly.
 
+> **New to this project? Start with the ideas.** How learning *during* growth
+> decides whether new data corrects or overwrites, and why growth trades a
+> small accuracy cost for control and incremental cost — all seven ideas,
+> plain language, honest provenance: **[`docs/IDEAS.md`](docs/IDEAS.md)**.
+
 ## Architecture
 
 ```mermaid
