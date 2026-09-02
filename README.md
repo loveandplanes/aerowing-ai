@@ -30,6 +30,17 @@ unclaimed opportunity:
 This repository is a working, tested implementation of that loop at
 wing-level fidelity, built to be honest about what it knows and doesn't.
 
+**What this AI is not.** It does not replace CFD for final verification
+and certification — those calculations remain indispensable. It **bridges
+the gap** between low-accuracy preliminary methods (±10–20% drag error
+despite millisecond speed) and high-fidelity CFD (hours per case, days
+per campaign): near-CFD accuracy at preliminary-design speed. The payoff
+is not fewer final CFD runs, but *better-informed* ones — more accurate
+screening earlier, more design iterations explored, faster convergence
+toward the final configuration. That saves significant time and cost, and
+makes additional intermediate design stages economically viable where today
+they are skipped.
+
 ## Evidence
 
 **Physics core under adversarial verification.** The 3D VLM survived a
