@@ -25,21 +25,25 @@ good enough to rank concepts, not to trust numbers. Between those two sits an
 unclaimed opportunity:
 
 > **Verification CFD runs anyway. Capture them, gate them, and train on them
-> continuously — so every program makes the AI permanently better for free.**
+> continuously — so every program makes the AI permanently better for 'free'.**
 
 This repository is a working, tested implementation of that loop at
 wing-level fidelity, built to be honest about what it knows and doesn't.
 
-**What this AI is not.** It does not replace CFD for final verification
-and certification — those calculations remain indispensable. It **bridges
-the gap** between low-accuracy preliminary methods (±10–20% drag error
-despite millisecond speed) and high-fidelity CFD (hours per case, days
-per campaign): near-CFD accuracy at preliminary-design speed. The payoff
-is not fewer final CFD runs, but *better-informed* ones — more accurate
-screening earlier, more design iterations explored, faster convergence
-toward the final configuration. That saves significant time and cost, and
-makes additional intermediate design stages economically viable where today
-they are skipped.
+### What this AI is not
+
+It does not replace CFD for final verification and certification — those
+calculations remain indispensable. It **bridges the gap** between
+low-accuracy preliminary methods (±10–20% drag error despite millisecond
+speed) and high-fidelity CFD (hours per case, days per campaign):
+near-CFD accuracy at preliminary-design speed. The payoff is not fewer
+final CFD runs, but *better-informed* ones — more accurate screening
+earlier, more design iterations explored, faster convergence toward the
+final configuration. That saves significant time and cost, and makes
+additional intermediate design stages economically viable where today they
+are skipped. In short: testing your ideas with **more accuracy than a
+preliminary tool, but far cheaper than CFD**, is where the saving comes
+from.
 
 ## Evidence
 
@@ -82,10 +86,6 @@ Retention improvements are statistically significant vs every baseline
 (Welch t, p < 0.01). Reproduce:
 `python experiments/growth_ablation.py` +
 `python experiments/residual_expansion.py`.
-
-Every link is instrumented: diverged runs are rejected by physics-bounds
-gates, partial solver deliveries train only delivered columns, promotion is
-holdout-gated, and capacity growth preserves the learned function exactly.
 
 > **New to this project? Start with the ideas.** How learning *during* growth
 > decides whether new data corrects or overwrites, and why growth trades a
@@ -172,9 +172,12 @@ industrial setting of quality-gated streaming CFD truth with delivery masks.
 > whether new data *corrects* or *overwrites*, whether the network learns
 > the basic physics or the physics of the correction, and how thought
 > organizes across dimensions. All seven ideas behind the growing AI —
-> their plain-language story, results, and honest provenance — are
-> collected in **[`docs/IDEAS.md`](docs/IDEAS.md)**. Start there if you
-> want the intuition before the code.
+> including the alternatives and control mechanisms developed where this
+> filter failed (shift-coupled exponent, zoned weighting, distribution-
+> weights, gated-residual composition) — their plain-language story,
+> results, and honest provenance, are collected in
+> **[`docs/IDEAS.md`](docs/IDEAS.md)**. Start there if you want the
+> intuition before the code.
 
 ## Installation
 
