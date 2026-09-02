@@ -101,12 +101,21 @@ posterior. Best retention of any arm (0.043). Tested in
 
 ## 3. Provenance — honest accounting
 
-These ideas were conceived without prior knowledge of much of the
-literature below. Tracing was done *afterwards* by searching
-arXiv / Scholar, with AI assistance. The list is to our knowledge
-complete for the mechanisms as implemented, but because this work was
-not built from these papers, references may still be missing. Pointers
-to closer prior art are welcome and will be added.
+These ideas — the general research questions, the conceptual direction,
+and each of the seven proposals above — were conceived by the author
+without AI generation of the ideas themselves and without prior knowledge
+of much of the literature below. Tracing was done *afterwards* by
+searching arXiv / Scholar, with AI assistance for discovery. The list is
+to our knowledge complete for the mechanisms as implemented, but because
+this work was not built from these papers, references may still be
+missing. Pointers to closer prior art are welcome and will be added.
+
+AI was used throughout the project as a collaborator for coding,
+writing assistance, literature discovery, and to build and run the
+experiments quickly — including implementing the harnesses, fixing bugs,
+and drafting documentation. The general ideas and research direction
+originate entirely from the author; AI accelerated their translation into
+tested artifacts.
 
 *   **Net2Net** (Chen et al., 2015) — function-preserving transformation.
 *   **Self-Expanding Neural Networks** (arXiv:2307.04526) — natural-gradient
