@@ -162,10 +162,14 @@ using per-sample old-vs-new residual comparison as a gradient **filter**
 (distill toward the reference where it was accurate, fit its residuals
 elsewhere) wins against plain fine-tuning, EWC and LwF — validated in the
 industrial setting of quality-gated streaming CFD truth with delivery masks.
-This repository's contribution is the industrial integration — quality-gated
-streaming CFD truth, delivery masks, holdout promotion — plus a controlled
-comparison showing why loss-shaping protection fails where structural gating
-succeeds in physics-surrogate regression.
+
+> **The full idea set — and why it matters.** Growth-time learning decides
+> whether new data *corrects* or *overwrites*, whether the network learns
+> the basic physics or the physics of the correction, and how thought
+> organizes across dimensions. All seven ideas behind the growing AI —
+> their plain-language story, results, and honest provenance — are
+> collected in **[`docs/IDEAS.md`](docs/IDEAS.md)**. Start there if you
+> want the intuition before the code.
 
 ## Installation
 
